@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock title %}
+{% block body %}
+<div class="container text-align=center my-5">
+    <form action='/contact' method="POST">
+        <div class="mb-3">
+          <label for="name" class="form-label">Your name</label>
+          <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="phone" name="phone">
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Your Message</label>
+            <input type="text" class="form-control" id="message" name="message" aria-describedby="emailHelp">
+          </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    
+</div>
+
+{% endblock body %}

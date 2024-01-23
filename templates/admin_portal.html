@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Portal{% endblock title %}
+{% block body %}
+{% if contacts|length == 0 %}
+<div class="alert alert-dark" role="alert">
+    <h3 style="text-align: center;
+    font-style: oblique;
+    font-family: monospace;
+    color: brown;">No contact message found here</h3>
+  </div>
+{% else %}
+<table class="table mx-3">
+    <thead>
+      <tr>
+        <th scope="col">SNo</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Message</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for c in contacts %}
+        <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{c.name}}</td>
+            <td>{{c.phone}}</td>
+            <td>{{c.message}}</td>
+            <td><a class="btn btn-outline-danger" href='/delete/{{c.sno}}'>Delete</a></td>
+            <td><a class="btn btn-outline-info" href='/update/{{c.sno}}'>Update</a></td>
+          </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+{% endblock body %}

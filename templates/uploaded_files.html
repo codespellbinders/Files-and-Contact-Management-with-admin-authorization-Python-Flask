@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Uploaded Files{% endblock title %}
+{% block body %}
+{% if newfile|length == 0 %}
+<div class="alert alert-dark" role="alert">
+    <h3 style="text-align: center;
+    font-style: oblique;
+    font-family: monospace;
+    color: brown;">No File found here</h3>
+  </div>
+{% else %}
+<table class="table mx-3">
+    <thead>
+      <tr>
+        <th scope="col">SNo</th>
+        <th scope="col">File Name</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for f in newfile %}
+        <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{f.file_name}}</td>
+            <td><a class="btn btn-outline-danger" href='/deletefile/{{f.sno}}'>Delete</a></td>
+              <td><a class="btn btn-outline-info" type="submit" href='/download_file/{{f.file_name}}'>Download</a></td>
+          </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+{% endblock body %}
